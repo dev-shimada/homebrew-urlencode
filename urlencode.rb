@@ -5,12 +5,12 @@
 class Urlencode < Formula
   desc ""
   homepage ""
-  version "0.0.4"
+  version "0.0.5"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/dev-shimada/urlencode/releases/download/v0.0.4/urlencode_Darwin_x86_64.tar.gz"
-      sha256 "239c17340ed9a7e5f9caa2cffa3eea1273a6a663b89fa6a441e63624c070254e"
+      url "https://github.com/dev-shimada/urlencode/releases/download/v0.0.5/urlencode_Darwin_x86_64.tar.gz"
+      sha256 "b08d13b51173f853931a1c55cab4946dab4cc00b028b8345e9bb76acafb95bc7"
 
       def install
         bin.install "urlencode"
@@ -28,8 +28,8 @@ class Urlencode < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/dev-shimada/urlencode/releases/download/v0.0.4/urlencode_Darwin_arm64.tar.gz"
-      sha256 "ca18011a290da8d8713e87ad51ced84cafaae5484626d4ef3f654224bbe98ad1"
+      url "https://github.com/dev-shimada/urlencode/releases/download/v0.0.5/urlencode_Darwin_arm64.tar.gz"
+      sha256 "30071da0d9287b1724be3f990daa19369a730c43ea6ef03a8dc5cabf98958ca1"
 
       def install
         bin.install "urlencode"
@@ -49,46 +49,40 @@ class Urlencode < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/dev-shimada/urlencode/releases/download/v0.0.4/urlencode_Linux_x86_64.tar.gz"
-        sha256 "b3e56d070798c19617ed9362387d348e7f0eed968bcb64947cd3f618534622e8"
+    if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
+      url "https://github.com/dev-shimada/urlencode/releases/download/v0.0.5/urlencode_Linux_x86_64.tar.gz"
+      sha256 "eabe42bfd5a429d6f024f5c00474b2c7509110f6f7b6e80ea2494c6db0fa8b9e"
+      def install
+        bin.install "urlencode"
+        # Install bash completion
+        output = Utils.safe_popen_read("#{bin}/urlencode completion bash")
+        (bash_completion/"urlencode").write output
 
-        def install
-          bin.install "urlencode"
-          # Install bash completion
-          output = Utils.safe_popen_read("#{bin}/urlencode completion bash")
-          (bash_completion/"urlencode").write output
+        # Install zsh completion
+        output = Utils.safe_popen_read("#{bin}/urlencode completion zsh")
+        (zsh_completion/"_urlencode").write output
 
-          # Install zsh completion
-          output = Utils.safe_popen_read("#{bin}/urlencode completion zsh")
-          (zsh_completion/"_urlencode").write output
-
-          # Install fish completion
-          output = Utils.safe_popen_read("#{bin}/urlencode completion fish")
-          (fish_completion/"urlencode.fish").write output
-        end
+        # Install fish completion
+        output = Utils.safe_popen_read("#{bin}/urlencode completion fish")
+        (fish_completion/"urlencode.fish").write output
       end
     end
-    if Hardware::CPU.arm?
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/dev-shimada/urlencode/releases/download/v0.0.4/urlencode_Linux_arm64.tar.gz"
-        sha256 "76e8ff9b8952aab9409657f882f2d3dd95ef28ac88a7fea63681aedaa37135e5"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/dev-shimada/urlencode/releases/download/v0.0.5/urlencode_Linux_arm64.tar.gz"
+      sha256 "ed16b34c0087e865db32d3ee9b79072a99775fbdede2e8bec296d32c1f33aa3b"
+      def install
+        bin.install "urlencode"
+        # Install bash completion
+        output = Utils.safe_popen_read("#{bin}/urlencode completion bash")
+        (bash_completion/"urlencode").write output
 
-        def install
-          bin.install "urlencode"
-          # Install bash completion
-          output = Utils.safe_popen_read("#{bin}/urlencode completion bash")
-          (bash_completion/"urlencode").write output
+        # Install zsh completion
+        output = Utils.safe_popen_read("#{bin}/urlencode completion zsh")
+        (zsh_completion/"_urlencode").write output
 
-          # Install zsh completion
-          output = Utils.safe_popen_read("#{bin}/urlencode completion zsh")
-          (zsh_completion/"_urlencode").write output
-
-          # Install fish completion
-          output = Utils.safe_popen_read("#{bin}/urlencode completion fish")
-          (fish_completion/"urlencode.fish").write output
-        end
+        # Install fish completion
+        output = Utils.safe_popen_read("#{bin}/urlencode completion fish")
+        (fish_completion/"urlencode.fish").write output
       end
     end
   end
