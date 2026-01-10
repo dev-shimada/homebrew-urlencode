@@ -14,22 +14,22 @@ cask "urlencode" do
   on_macos do
     on_intel do
       url "https://github.com/dev-shimada/urlencode/releases/download/v#{version}/urlencode_Darwin_x86_64.tar.gz"
-      sha256 "951b7e1ac21a8cde3fed877d8fa15faec187b7fdcce73ed7d742b77ebf63f8c8"
+      sha256 "29f1c171171278cac39c951a144a0978ad7b43d165cadb7d85b6f2e43a6c9eac"
     end
     on_arm do
       url "https://github.com/dev-shimada/urlencode/releases/download/v#{version}/urlencode_Darwin_arm64.tar.gz"
-      sha256 "79c475dc808a9779d43398a4b37a8a4d9367e8a6416f0c4f7fdc837ff43b5655"
+      sha256 "cae3fbb96f648be66f0deb545351f46d1d96c714101da3f1041049b8718dee69"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/dev-shimada/urlencode/releases/download/v#{version}/urlencode_Linux_x86_64.tar.gz"
-      sha256 "cffdb14d1e5a96ceb5881223403ca35f0d6d75e2d023d4b318d678db85a963c3"
+      sha256 "bcb596a1a5d9107cf429ef40429fa45ad0c96c6fae53778539d0a8e7d8460ead"
     end
     on_arm do
       url "https://github.com/dev-shimada/urlencode/releases/download/v#{version}/urlencode_Linux_arm64.tar.gz"
-      sha256 "c3cf72918e06264b10c1b909d4bb9c55d40bb0bfd4e548c8b71283af483556ae"
+      sha256 "cd60757570414bdf44fa2daa7d9afc7e9c3ee2cffdcdbe8759e2a1a26277d3d9"
     end
   end
 
